@@ -1,0 +1,40 @@
+﻿<Window x:Class="Hotel.DesktopUI.ReserveRoom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ReserveRoom" Height="340" Width="360">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Тип номеру" TextAlignment="Left"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Margin="5" Name="txtBlockType" TextAlignment="Left"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" Text="Дата заїзду" TextAlignment="Left"></TextBlock>
+        <DatePicker Grid.Row="1" Grid.Column="1" Name="rrDateFrom" Margin="5" IsDropDownOpen="False" SelectedDateFormat="Short"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" Text="Дата від'їзду" TextAlignment="Left"></TextBlock>
+        <DatePicker Grid.Row="2" Grid.Column="1" Name="rrDateTo" Margin="5" IsDropDownOpen="False" SelectedDateFormat="Short"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" Text="ПІБ" TextAlignment="Left"></TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="txtFio"></TextBox>
+        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" Text="Телефон" TextAlignment="Left"></TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="txtTel"></TextBox>
+        <TextBlock Grid.Row="5" Grid.Column="0" Margin="5" Text="Email" TextAlignment="Left"></TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="5" Name="txtEmail"></TextBox>
+        <TextBlock Grid.Row="6" Grid.Column="0" Margin="5" Text="Вартість номеру" TextAlignment="Left"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1" Margin="5" Name="txtBlockCost" TextAlignment="Left"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="0" Margin="5" Text="Розрахунковий час" TextAlignment="Left"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="1" Margin="5" Name="txtBlockInfo" TextAlignment="Left"></TextBlock>
+        <Button Grid.Row="8" Grid.Column="0" Margin="20,5" Name="btnOk" Content="Бронювати" Click="btnOk_Click"></Button>
+        <Button Grid.Row="8" Grid.Column="1" Margin="20,5" Name="btnCancel" Content="Відмінити" Click="btnCancel_Click"></Button>
+    </Grid>
+</Window>

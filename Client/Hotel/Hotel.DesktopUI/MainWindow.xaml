@@ -1,0 +1,36 @@
+﻿<Window x:Class="Hotel.DesktopUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" ItemsSource="{Binding Path=Rooms}" AutoGenerateColumns="False" Name="ListRoom" Loaded="ListRoom_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Path=npp}" />
+                <DataGridTextColumn Header="Назва" Binding="{Binding Path=Name}" />
+                <DataGridTextColumn Header="Ціна" Binding="{Binding Path=Price}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+            <TextBlock Margin="5" Height="20">Дата заїзду</TextBlock>
+            <DatePicker Name="mwDateFrom" Margin="5,10,22,5" IsDropDownOpen="False" SelectedDateFormat="Short"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Margin="5" Height="20">Дата від'їзду</TextBlock>
+            <DatePicker Name="mwDateTo" Margin="5,10,22,5" IsDropDownOpen="False" SelectedDateFormat="Short"/>
+        </StackPanel>
+        <TextBlock Grid.Row="2" Grid.Column="0" Margin="10" Name="txtBlock"></TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnOk" Margin="10" Content="Перевірити" Click="btnOk_Click" HorizontalAlignment="Stretch"></Button>
+            <Button Name="btnReserve" Margin="10" Content="Забронювати" Click="btnReserve_Click" HorizontalAlignment="Stretch"></Button>
+        </StackPanel>
+    </Grid>
+</Window>
