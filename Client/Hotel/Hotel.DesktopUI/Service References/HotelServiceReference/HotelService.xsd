@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hotel.Entity" />
-  <xs:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Hotel.Service" />
+  <xs:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs" />
+  <xs:element name="DoWork">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoWorkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DoWorkResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SelectAll">
     <xs:complexType>
       <xs:sequence />
@@ -10,8 +21,20 @@
   <xs:element name="SelectAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Hotel.Entity" minOccurs="0" name="SelectAllResult" nillable="true" type="q1:ArrayOfRoom" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs" minOccurs="0" name="SelectAllResult" nillable="true" type="q1:ArrayOfRoomDTO" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BrokedRoom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs" minOccurs="0" name="room" nillable="true" type="q2:BrokedRoomDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BrokedRoomResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetId">
@@ -38,49 +61,7 @@
   <xs:element name="GetRowByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Hotel.Entity" minOccurs="0" name="GetRowByIdResult" nillable="true" type="q2:Room" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetData">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="value" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddRecord">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Hotel.Entity" minOccurs="0" name="newRoom" nillable="true" type="q3:NewRoom" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddRecordResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Hotel.Entity" minOccurs="0" name="AddRecordResult" nillable="true" type="q4:NewRoom" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContract">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Hotel.Service" minOccurs="0" name="composite" nillable="true" type="q5:CompositeType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContractResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Hotel.Service" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q6:CompositeType" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs" minOccurs="0" name="GetRowByIdResult" nillable="true" type="q3:RoomDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

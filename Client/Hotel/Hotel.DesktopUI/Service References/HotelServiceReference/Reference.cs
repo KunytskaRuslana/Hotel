@@ -15,9 +15,9 @@ namespace Hotel.DesktopUI.HotelServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Room", Namespace="http://schemas.datacontract.org/2004/07/Hotel.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoomDTO", Namespace="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs")]
     [System.SerializableAttribute()]
-    public partial class Room : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RoomDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -108,9 +108,9 @@ namespace Hotel.DesktopUI.HotelServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="NewRoom", Namespace="http://schemas.datacontract.org/2004/07/Hotel.Entity")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BrokedRoomDTO", Namespace="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs")]
     [System.SerializableAttribute()]
-    public partial class NewRoom : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class BrokedRoomDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -129,9 +129,6 @@ namespace Hotel.DesktopUI.HotelServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NumberPhoneField;
@@ -215,19 +212,6 @@ namespace Hotel.DesktopUI.HotelServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string NumberPhone {
             get {
                 return this.NumberPhoneField;
@@ -263,76 +247,28 @@ namespace Hotel.DesktopUI.HotelServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/Hotel.Service")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HotelServiceReference.IHotelService")]
     public interface IHotelService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/SelectAll", ReplyAction="http://tempuri.org/IHotelService/SelectAllResponse")]
-        Hotel.DesktopUI.HotelServiceReference.Room[] SelectAll();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/DoWork", ReplyAction="http://tempuri.org/IHotelService/DoWorkResponse")]
+        string DoWork();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/DoWork", ReplyAction="http://tempuri.org/IHotelService/DoWorkResponse")]
+        System.Threading.Tasks.Task<string> DoWorkAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/SelectAll", ReplyAction="http://tempuri.org/IHotelService/SelectAllResponse")]
-        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.Room[]> SelectAllAsync();
+        Hotel.DesktopUI.HotelServiceReference.RoomDTO[] SelectAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/SelectAll", ReplyAction="http://tempuri.org/IHotelService/SelectAllResponse")]
+        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.RoomDTO[]> SelectAllAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/BrokedRoom", ReplyAction="http://tempuri.org/IHotelService/BrokedRoomResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(string), Action="http://tempuri.org/IHotelService/BrokedRoomStringFault", Name="string", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
+        void BrokedRoom(Hotel.DesktopUI.HotelServiceReference.BrokedRoomDTO room);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/BrokedRoom", ReplyAction="http://tempuri.org/IHotelService/BrokedRoomResponse")]
+        System.Threading.Tasks.Task BrokedRoomAsync(Hotel.DesktopUI.HotelServiceReference.BrokedRoomDTO room);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetId", ReplyAction="http://tempuri.org/IHotelService/GetIdResponse")]
         int GetId(int numRecord);
@@ -341,28 +277,10 @@ namespace Hotel.DesktopUI.HotelServiceReference {
         System.Threading.Tasks.Task<int> GetIdAsync(int numRecord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetRowById", ReplyAction="http://tempuri.org/IHotelService/GetRowByIdResponse")]
-        Hotel.DesktopUI.HotelServiceReference.Room GetRowById(int id);
+        Hotel.DesktopUI.HotelServiceReference.RoomDTO GetRowById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetRowById", ReplyAction="http://tempuri.org/IHotelService/GetRowByIdResponse")]
-        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.Room> GetRowByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetData", ReplyAction="http://tempuri.org/IHotelService/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetData", ReplyAction="http://tempuri.org/IHotelService/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/AddRecord", ReplyAction="http://tempuri.org/IHotelService/AddRecordResponse")]
-        Hotel.DesktopUI.HotelServiceReference.NewRoom AddRecord(Hotel.DesktopUI.HotelServiceReference.NewRoom newRoom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/AddRecord", ReplyAction="http://tempuri.org/IHotelService/AddRecordResponse")]
-        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.NewRoom> AddRecordAsync(Hotel.DesktopUI.HotelServiceReference.NewRoom newRoom);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IHotelService/GetDataUsingDataContractResponse")]
-        Hotel.DesktopUI.HotelServiceReference.CompositeType GetDataUsingDataContract(Hotel.DesktopUI.HotelServiceReference.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHotelService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IHotelService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.CompositeType> GetDataUsingDataContractAsync(Hotel.DesktopUI.HotelServiceReference.CompositeType composite);
+        System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.RoomDTO> GetRowByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -392,12 +310,28 @@ namespace Hotel.DesktopUI.HotelServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Hotel.DesktopUI.HotelServiceReference.Room[] SelectAll() {
+        public string DoWork() {
+            return base.Channel.DoWork();
+        }
+        
+        public System.Threading.Tasks.Task<string> DoWorkAsync() {
+            return base.Channel.DoWorkAsync();
+        }
+        
+        public Hotel.DesktopUI.HotelServiceReference.RoomDTO[] SelectAll() {
             return base.Channel.SelectAll();
         }
         
-        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.Room[]> SelectAllAsync() {
+        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.RoomDTO[]> SelectAllAsync() {
             return base.Channel.SelectAllAsync();
+        }
+        
+        public void BrokedRoom(Hotel.DesktopUI.HotelServiceReference.BrokedRoomDTO room) {
+            base.Channel.BrokedRoom(room);
+        }
+        
+        public System.Threading.Tasks.Task BrokedRoomAsync(Hotel.DesktopUI.HotelServiceReference.BrokedRoomDTO room) {
+            return base.Channel.BrokedRoomAsync(room);
         }
         
         public int GetId(int numRecord) {
@@ -408,36 +342,12 @@ namespace Hotel.DesktopUI.HotelServiceReference {
             return base.Channel.GetIdAsync(numRecord);
         }
         
-        public Hotel.DesktopUI.HotelServiceReference.Room GetRowById(int id) {
+        public Hotel.DesktopUI.HotelServiceReference.RoomDTO GetRowById(int id) {
             return base.Channel.GetRowById(id);
         }
         
-        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.Room> GetRowByIdAsync(int id) {
+        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.RoomDTO> GetRowByIdAsync(int id) {
             return base.Channel.GetRowByIdAsync(id);
-        }
-        
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
-        public Hotel.DesktopUI.HotelServiceReference.NewRoom AddRecord(Hotel.DesktopUI.HotelServiceReference.NewRoom newRoom) {
-            return base.Channel.AddRecord(newRoom);
-        }
-        
-        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.NewRoom> AddRecordAsync(Hotel.DesktopUI.HotelServiceReference.NewRoom newRoom) {
-            return base.Channel.AddRecordAsync(newRoom);
-        }
-        
-        public Hotel.DesktopUI.HotelServiceReference.CompositeType GetDataUsingDataContract(Hotel.DesktopUI.HotelServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<Hotel.DesktopUI.HotelServiceReference.CompositeType> GetDataUsingDataContractAsync(Hotel.DesktopUI.HotelServiceReference.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
         }
     }
 }

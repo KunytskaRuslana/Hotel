@@ -103,13 +103,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\HotelServiceReference\Hotel.DesktopUI.HotelServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HotelServiceReference\Hotel.DesktopUI.HotelServiceReference.NewRoom.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HotelServiceReference\Hotel.DesktopUI.HotelServiceReference.Room.datasource">
+    <None Include="Service References\HotelServiceReference\Hotel.DesktopUI.HotelServiceReference.RoomDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\HotelServiceReference\HotelService.wsdl" />
@@ -120,9 +114,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\HotelServiceReference\HotelService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HotelServiceReference\HotelService3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

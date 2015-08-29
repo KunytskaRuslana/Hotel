@@ -63,6 +63,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\BrokedRoomDTO.cs" />
+    <Compile Include="DTOs\RoomDTO.cs" />
     <Compile Include="HotelService.svc.cs">
       <DependentUpon>HotelService.svc</DependentUpon>
     </Compile>
@@ -84,6 +86,10 @@
     <ProjectReference Include="..\Hotel.Entity\Hotel.Entity.csproj">
       <Project>{6c7331b3-aca4-49dd-a66d-9f4b0eee699f}</Project>
       <Name>Hotel.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Repositories\Hotel.Repositories.csproj">
+      <Project>{48d2cc6d-feae-45e4-a918-65e62950d7fb}</Project>
+      <Name>Hotel.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

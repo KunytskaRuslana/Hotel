@@ -4,15 +4,29 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hotel.Entity" />
-      <xsd:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Hotel.Service" />
+      <xsd:import schemaLocation="http://localhost:53344/HotelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hotel.Service.DTOs" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IHotelService_DoWork_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoWork" />
+  </wsdl:message>
+  <wsdl:message name="IHotelService_DoWork_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  </wsdl:message>
   <wsdl:message name="IHotelService_SelectAll_InputMessage">
     <wsdl:part name="parameters" element="tns:SelectAll" />
   </wsdl:message>
   <wsdl:message name="IHotelService_SelectAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:SelectAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHotelService_BrokedRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrokedRoom" />
+  </wsdl:message>
+  <wsdl:message name="IHotelService_BrokedRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrokedRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHotelService_BrokedRoom_StringFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q1:string" />
   </wsdl:message>
   <wsdl:message name="IHotelService_GetId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetId" />
@@ -26,28 +40,19 @@
   <wsdl:message name="IHotelService_GetRowById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRowByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IHotelService_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
-  </wsdl:message>
-  <wsdl:message name="IHotelService_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
-  </wsdl:message>
-  <wsdl:message name="IHotelService_AddRecord_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddRecord" />
-  </wsdl:message>
-  <wsdl:message name="IHotelService_AddRecord_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddRecordResponse" />
-  </wsdl:message>
-  <wsdl:message name="IHotelService_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IHotelService_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
-  </wsdl:message>
   <wsdl:portType name="IHotelService">
+    <wsdl:operation name="DoWork">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/DoWork" message="tns:IHotelService_DoWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/DoWorkResponse" message="tns:IHotelService_DoWork_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SelectAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/SelectAll" message="tns:IHotelService_SelectAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/SelectAllResponse" message="tns:IHotelService_SelectAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BrokedRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/BrokedRoom" message="tns:IHotelService_BrokedRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/BrokedRoomResponse" message="tns:IHotelService_BrokedRoom_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IHotelService/BrokedRoomStringFault" name="StringFault" message="tns:IHotelService_BrokedRoom_StringFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetId">
       <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/GetId" message="tns:IHotelService_GetId_InputMessage" />
@@ -57,21 +62,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/GetRowById" message="tns:IHotelService_GetRowById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/GetRowByIdResponse" message="tns:IHotelService_GetRowById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/GetData" message="tns:IHotelService_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/GetDataResponse" message="tns:IHotelService_GetData_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddRecord">
-      <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/AddRecord" message="tns:IHotelService_AddRecord_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/AddRecordResponse" message="tns:IHotelService_AddRecord_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IHotelService/GetDataUsingDataContract" message="tns:IHotelService_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IHotelService/GetDataUsingDataContractResponse" message="tns:IHotelService_GetDataUsingDataContract_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IHotelService" type="tns:IHotelService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DoWork">
+      <soap:operation soapAction="http://tempuri.org/IHotelService/DoWork" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SelectAll">
       <soap:operation soapAction="http://tempuri.org/IHotelService/SelectAll" style="document" />
       <wsdl:input>
@@ -80,6 +82,18 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrokedRoom">
+      <soap:operation soapAction="http://tempuri.org/IHotelService/BrokedRoom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="StringFault">
+        <soap:fault use="literal" name="StringFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetId">
       <soap:operation soapAction="http://tempuri.org/IHotelService/GetId" style="document" />
@@ -92,33 +106,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetRowById">
       <soap:operation soapAction="http://tempuri.org/IHotelService/GetRowById" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IHotelService/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddRecord">
-      <soap:operation soapAction="http://tempuri.org/IHotelService/AddRecord" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IHotelService/GetDataUsingDataContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

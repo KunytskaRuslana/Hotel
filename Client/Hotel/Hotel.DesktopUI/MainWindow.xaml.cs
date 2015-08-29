@@ -21,6 +21,8 @@ namespace Hotel.DesktopUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IHotelService _hotelService;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +30,8 @@ namespace Hotel.DesktopUI
 
         private void ListRoom_Loaded(object sender, RoutedEventArgs e)
         {
-            var service = new HotelServiceClient();
-            Room[] rooms = service.SelectAll();
+            this._hotelService = new HotelServiceClient();
+            RoomDTO[] rooms = this._hotelService.SelectAll();
             ListRoom.ItemsSource = rooms;
         }
 
@@ -65,8 +67,8 @@ namespace Hotel.DesktopUI
             else
             {
                 HotelServiceClient idRecord = new HotelServiceClient();
-                int _idRecord = idRecord.GetId(numRecord);
-                Room room = new Room();
+                int _idRecord = idRecord.GetId(numRecord);          
+                RoomDTO room = new RoomDTO();
                 room = idRecord.GetRowById(_idRecord);
                 ReserveRoom reserveRoom = new ReserveRoom();
                 DateTime aaa = Convert.ToDateTime(mwDateFrom.Text);
@@ -78,6 +80,7 @@ namespace Hotel.DesktopUI
                 reserveRoom.rrDateTo.Text = mwDateTo.Text;
                 reserveRoom.txtBlockCost.Text = price.ToString() + " грн.";
                 reserveRoom.txtBlockInfo.Text = "14:00 " + reserveRoom.rrDateFrom.Text + " - 12:00 " + reserveRoom.rrDateTo.Text;
+                reserveRoom._IDRecord = _idRecord;
                 reserveRoom.Show();
             }
         }

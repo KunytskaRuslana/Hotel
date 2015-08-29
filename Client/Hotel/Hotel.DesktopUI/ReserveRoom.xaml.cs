@@ -27,6 +27,7 @@ namespace Hotel.DesktopUI
         private string tel;
         private string email;
         private string cost;
+        private int IDRecord;
 
         public string _TypeRoom
         {
@@ -63,6 +64,11 @@ namespace Hotel.DesktopUI
             get { return this.cost; }
             set { this.cost = value; }
         }
+        public int _IDRecord
+        {
+            get { return IDRecord; }
+            set { IDRecord = value; }
+        }
 
         public ReserveRoom()
         {
@@ -78,16 +84,16 @@ namespace Hotel.DesktopUI
             _Tel = txtTel.Text;
             _Email = txtEmail.Text;
             _Cost = txtBlockCost.Text;
-            NewRoom newRoom = new NewRoom();
-            newRoom.Fio = _Fio;
-            newRoom.NumberPhone = _Tel;
-            newRoom.Email = _Email;
-            newRoom.DescriptionRommId = 1;
-            newRoom.DateFrom = _DateFrom;
-            newRoom.DateTo = _DateTo;
-            newRoom.Reserve = 1;
-            HotelServiceClient brokedRoom = new HotelServiceClient();
-            brokedRoom.AddRecord(newRoom);
+            BrokedRoomDTO brokedRoom = new BrokedRoomDTO();
+            brokedRoom.Fio = _Fio;
+            brokedRoom.NumberPhone = _Tel;
+            brokedRoom.Email = _Email;
+            brokedRoom.DescriptionRommId = _IDRecord;            
+            brokedRoom.DateFrom = _DateFrom;
+            brokedRoom.DateTo = _DateTo;
+            brokedRoom.Reserve = 1;
+            HotelServiceClient broked = new HotelServiceClient();
+            broked.BrokedRoom(brokedRoom);
             Close();
         }
 
